@@ -92,4 +92,16 @@ Main API to manage some Peru Pokemon tournaments at Lima, Peru.
 
 <hr/>
 
+### Lite Red-Cetario cooking recipes app: less use of resource in times of pandemic
+
+_Paper publication._
+
+Current applications that exist in the mobile market consume a lot of resources such as RAM and data storage, in addition the needing of consumers are restricted to operate from 6.0 to the most current version of the Android operating system. In this work, my team and I have designed and implemented a lite mobile application that can be used with old or recent versions of the android phone operating systems. DOI 10.52248/eb.Vol4Iss1.125
+
+**[▶ PDF](https://doi.org/10.52248/eb.Vol4Iss1.125)**
+
+![Android](https://img.shields.io/badge/-Android-green?style=flat-square&logo=android&logoColor=white) ![Kotlin](https://img.shields.io/badge/-Kotlin-purple?style=flat-square&logo=kotlin&logoColor=white) ![MySQL](https://img.shields.io/badge/-MySQL-black?style=flat-square&logo=mysql&logoColor=white) ![PDF](https://img.shields.io/badge/-PDF-red?style=flat-square&logo=pdf&logoColor=white)
+
+<hr/>
+
 **[▶ See Another Projects](https://github.com/Jibaru?page=1&tab=repositories)**
