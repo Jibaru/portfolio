@@ -1,19 +1,20 @@
 const projects = [
   {
     name: "Gostore",
-    description: "A simplistic and minimalist file storage.",
+    summary: "A simplistic and minimalist file storage similar to AWS S3",
     links: [{ name: "Github", url: "https://github.com/Jibaru/gostore" }],
     techStack: ["Go", "Echo Framework", "Hexagonal Architecture"],
   },
   {
     name: "Gobeats",
-    description: "Google Drive Command Line Player.",
+    summary:
+      "Play songs from Google Drive in your terminal with minimal configuration",
     links: [{ name: "Github", url: "https://github.com/Jibaru/gobeats" }],
     techStack: ["Go", "Docker", "CLI", "Termui"],
   },
   {
     name: "Home Inventory API",
-    description: "Organize your items at home in a simple way.",
+    summary: "Organize your items at home in a simple way",
     links: [
       { name: "Github", url: "https://github.com/Jibaru/home-inventory-api" },
     ],
@@ -30,7 +31,7 @@ const projects = [
   },
   {
     name: "SchemaSpy Docker Setup",
-    description: "Document your mysql database on HTML and Markdown with JSON.",
+    summary: "Document your MySQL database into HTML and Markdown using JSON",
     links: [
       {
         name: "Github",
@@ -41,7 +42,8 @@ const projects = [
   },
   {
     name: "Purchase Records API",
-    description: "Upload your XML Invoices and get all information you need.",
+    summary:
+      "Upload your XML Invoices and get all information you need usingthe UBL 2.0 Sunat standard",
     links: [
       { name: "Github", url: "https://github.com/Jibaru/purchase-records-api" },
     ],
@@ -49,8 +51,8 @@ const projects = [
   },
   {
     name: "Peru Pokemon Tournaments Manager",
-    description:
-      "An API to manage tournaments inscriptions and tournaments created in Peru.",
+    summary:
+      "An API to manage tournaments inscriptions and tournaments created in Peru",
     links: [
       {
         name: "Github",
@@ -61,9 +63,61 @@ const projects = [
   },
   {
     name: "Lite Red-Cetario cooking recipes app",
-    description: "Paper publication.",
-    links: [{ name: "PDF", url: "https://doi.org/10.52248/eb.Vol4Iss1.125" }],
-    techStack: ["Android", "Kotlin", "MySQL", "PDF"],
+    summary:
+      "An app to manage cooking recipes in devices with less resources in times of COVID-19",
+    links: [
+      {
+        name: "PDF",
+        url: "https://doi.org/10.52248/eb.Vol4Iss1.125",
+      },
+      {
+        name: "Github",
+        url: "https://github.com/jibaru/red-cetario",
+      },
+    ],
+    techStack: ["Android", "Kotlin", "MySQL", "PDF", "Paper publication"],
+  },
+  {
+    name: "OS Processes Planning Explainer",
+    summary:
+      "Understand step-by-step a bunch of processes planning by the OS kernel",
+    links: [
+      {
+        name: "Website",
+        url: "https://jibaru.github.io/process-planning-algorithms/",
+      },
+      {
+        name: "Github",
+        url: "https://github.com/Jibaru/process-planning-algorithms",
+      },
+    ],
+    techStack: ["Algorithm", "JS", "OS"],
+  },
+  {
+    name: "Network Segmentation Tool",
+    summary: "A tool to help you to segment your IPv4 network",
+    links: [
+      {
+        name: "Website",
+        url: "https://jibaru.github.io/network-segmentation/",
+      },
+      {
+        name: "Github",
+        url: "https://github.com/Jibaru/network-segmentation",
+      },
+    ],
+    techStack: ["Algorithm", "JS", "Networks", "IPv4"],
+  },
+  {
+    name: "Graphical Computer Algorithms",
+    summary: "Many graphical algorithms implemented in C++ with GLUT",
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/Jibaru/graphical-computing-algorithms",
+      },
+    ],
+    techStack: ["Algorithm", "OpenGL/GLUT", "C++", "Graphics"],
   },
 ];
 
@@ -73,12 +127,11 @@ function createProjectElement(project) {
       <div class="card">
         <div class="card-title">
           <h2>
-            <strong>${project.name}:</strong>
-            <i>${project.description}</i>
+            <strong>${project.name}</strong>
           </h2>
         </div>
         <div class="card-body">
-          <p>${project.description}</p>
+          <p>${project.summary}</p>
           <ul class="tech-list">
             ${project.techStack.map((tech) => `<li>${tech}</li>`).join("")}
           </ul>
@@ -89,7 +142,7 @@ function createProjectElement(project) {
             ${project.links
               .map(
                 (link) =>
-                  `<li><a href="${link.url}" target="_blank">${link.name}</a></li>`
+                  `<li><a href="${link.url}" target="_blank">${link.name}↗</a></li>`
               )
               .join("")}
           </ul>
