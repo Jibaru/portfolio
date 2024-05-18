@@ -1,9 +1,14 @@
+const GITHUB_INFORMATION_URL =
+  "https://api.github.com/repos/{username}/{repository}";
+
 const projects = [
   {
     name: "Gostore",
     summary: "A simplistic and minimalist file storage similar to AWS S3",
     links: [{ name: "Github", url: "https://github.com/Jibaru/gostore" }],
     techStack: ["Go", "Echo Framework", "Hexagonal Architecture"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "gostore",
   },
   {
     name: "Gobeats",
@@ -11,6 +16,8 @@ const projects = [
       "Play songs from Google Drive in your terminal with minimal configuration",
     links: [{ name: "Github", url: "https://github.com/Jibaru/gobeats" }],
     techStack: ["Go", "Docker", "CLI", "Termui"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "gobeats",
   },
   {
     name: "Home Inventory API",
@@ -28,6 +35,8 @@ const projects = [
       "Echo Framework",
       "Hexagonal Architecture",
     ],
+    githubUsername: "jibaru",
+    githubRepositoryName: "home-inventory-api",
   },
   {
     name: "SchemaSpy Docker Setup",
@@ -39,6 +48,8 @@ const projects = [
       },
     ],
     techStack: ["Python", "Docker", "Java", "JSON", "XML", "Markdown"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "schemaspy-docker-setup",
   },
   {
     name: "Purchase Records API",
@@ -48,6 +59,8 @@ const projects = [
       { name: "Github", url: "https://github.com/Jibaru/purchase-records-api" },
     ],
     techStack: ["PHP", "Docker", "MySQL", "DDD", "XML"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "purchase-records-api",
   },
   {
     name: "Peru Pokemon Tournaments Manager",
@@ -60,6 +73,8 @@ const projects = [
       },
     ],
     techStack: ["PHP", "Docker", "MySQL", "Pokemon"],
+    githubUsername: "Peru-Pokemon-Tournaments",
+    githubRepositoryName: "peru-pokemon-tournaments-api",
   },
   {
     name: "Lite Red-Cetario cooking recipes app",
@@ -76,6 +91,8 @@ const projects = [
       },
     ],
     techStack: ["Android", "Kotlin", "MySQL", "PDF", "Paper publication"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "red-cetario",
   },
   {
     name: "OS Processes Planning Explainer",
@@ -92,6 +109,8 @@ const projects = [
       },
     ],
     techStack: ["Algorithm", "JS", "OS"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "process-planning-algorithms",
   },
   {
     name: "Network Segmentation Tool",
@@ -107,6 +126,8 @@ const projects = [
       },
     ],
     techStack: ["Algorithm", "JS", "Networks", "IPv4"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "network-segmentation",
   },
   {
     name: "Graphical Computer Algorithms",
@@ -118,17 +139,45 @@ const projects = [
       },
     ],
     techStack: ["Algorithm", "OpenGL/GLUT", "C++", "Graphics"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "graphical-computing-algorithms",
   },
 ];
 
-function createProjectElement(project) {
+const fetchGithubInformation = async (githubUsername, repositoryName) => {
+  const resp = await fetch(
+    GITHUB_INFORMATION_URL.replace("{repository}", repositoryName).replace(
+      "{username}",
+      githubUsername
+    )
+  );
+  const data = await resp.json();
+
+  return {
+    stars: data.stargazers_count ?? 0,
+    forks: data.forks_count ?? 0,
+  };
+};
+
+const createProjectElement = async (project) => {
   const li = document.createElement("li");
+
+  const githubInformation = await fetchGithubInformation(
+    project.githubUsername,
+    project.githubRepositoryName
+  );
+
   li.innerHTML = `
       <div class="card">
         <div class="card-title">
           <h2>
             <strong>${project.name}</strong>
           </h2>
+          <div class="github-info"><span class="stars">⭐ ${
+            githubInformation.stars
+          }</span> <span class="forks">🍴 ${
+    githubInformation.forks
+  }</span></div>
         </div>
         <div class="card-body">
           <p>${project.summary}</p>
@@ -150,14 +199,15 @@ function createProjectElement(project) {
       </div>
     `;
   return li;
-}
+};
 
-function loadProjects() {
+const loadProjects = async () => {
   const projectsList = document.getElementById("projects");
-  projects.forEach((project) => {
-    const projectElement = createProjectElement(project);
+
+  for (const project of projects) {
+    const projectElement = await createProjectElement(project);
     projectsList.appendChild(projectElement);
-  });
-}
+  }
+};
 
 document.addEventListener("DOMContentLoaded", loadProjects);

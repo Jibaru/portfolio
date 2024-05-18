@@ -108,6 +108,11 @@ i {
   border: 2px dotted var(--separator-border-color);
 }
 
+.github-info {
+  color: var(--light-color);
+  font-size: 0.7rem;
+}
+
 footer {
   margin: 1rem 0 0.5rem 0;
   color: var(--light-color);
