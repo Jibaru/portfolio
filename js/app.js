@@ -5,7 +5,13 @@ const projects = [
   {
     name: "Gostore",
     summary: "A simplistic and minimalist file storage similar to AWS S3",
-    links: [{ name: "Github", url: "https://github.com/Jibaru/gostore" }],
+    links: [
+      { name: "Github", url: "https://github.com/Jibaru/gostore" },
+      {
+        name: "YouTube",
+        url: "https://youtu.be/KePrxWgED30?si=OPSe8FniN7YMfHf5",
+      },
+    ],
     techStack: ["Go", "Echo Framework", "Hexagonal Architecture"],
     githubUsername: "jibaru",
     githubRepositoryName: "gostore",
@@ -75,6 +81,24 @@ const projects = [
     techStack: ["PHP", "Docker", "MySQL", "Pokemon"],
     githubUsername: "Peru-Pokemon-Tournaments",
     githubRepositoryName: "peru-pokemon-tournaments-api",
+  },
+  {
+    name: "Go Data Structures Library",
+    summary:
+      "Stacks, Queues, Linked Lists, Trees and more data structures made in Go",
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/Jibaru/golang-data-structures",
+      },
+      {
+        name: "YouTube",
+        url: "https://www.youtube.com/playlist?list=PLFUBk0vf6VP9tm4T4d5-tnutLFwtq6lo0",
+      },
+    ],
+    techStack: ["Go", "Data Structures", "Algorithms"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "golang-data-structures",
   },
   {
     name: "Lite Red-Cetario cooking recipes app",
@@ -175,7 +199,7 @@ const createProjectElement = async (project) => {
           </h2>
           <div class="github-info"><span class="stars">⭐ ${
             githubInformation.stars
-          }</span> <span class="forks">🍴 ${
+          }</span> <span class="forks">⤴️ ${
     githubInformation.forks
   }</span></div>
         </div>
