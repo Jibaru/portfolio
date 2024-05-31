@@ -101,6 +101,20 @@ const projects = [
     githubRepositoryName: "golang-data-structures",
   },
   {
+    name: "Gofind",
+    summary:
+      "Find files faster in your computer in your CLI with the power of concurrency",
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/Jibaru/gofind",
+      },
+    ],
+    techStack: ["Go", "Concurrency", "File Searching", "CLI"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "gofind",
+  },
+  {
     name: "Lite Red-Cetario cooking recipes app",
     summary:
       "An app to manage cooking recipes in devices with less resources in times of COVID-19",
