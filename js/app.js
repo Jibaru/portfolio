@@ -45,6 +45,23 @@ const projects = [
     githubRepositoryName: "home-inventory-api",
   },
   {
+    name: "Do",
+    summary: 'Custom "programming language" to do HTTP requests in plain text',
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/Jibaru/do",
+      },
+      {
+        name: "YouTube",
+        url: "https://www.youtube.com/watch?v=o66AymeA4m0",
+      },
+    ],
+    techStack: ["Go", "CLI", "HTTP", "JSON", "Pipeline", "vscode"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "do",
+  },
+  {
     name: "SchemaSpy Docker Setup",
     summary: "Document your MySQL database into HTML and Markdown using JSON",
     links: [
