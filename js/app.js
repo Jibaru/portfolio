@@ -214,6 +214,20 @@ const projects = [
     githubRepositoryName: "graphical-computing-algorithms",
     type: TOOLING_TYPE,
   },
+  {
+    name: "Patterns of Enterprise Applications in Go",
+    summary: "A bunch of examples of the patterns described by Fowler in Go",
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/Jibaru/patterns-of-enterprise-application-in-go",
+      },
+    ],
+    techStack: ["Patterns", "Go", "Examples"],
+    githubUsername: "jibaru",
+    githubRepositoryName: "patterns-of-enterprise-application-in-go",
+    type: TOOLING_TYPE,
+  },
 ];
 
 const fetchGithubInformation = async (githubUsername, repositoryName) => {
