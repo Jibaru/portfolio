@@ -1,6 +1,10 @@
 const GITHUB_INFORMATION_URL =
   "https://api.github.com/repos/{username}/{repository}";
 
+const WEB_TYPE = "web";
+const LIBRARY_TYPE = "library";
+const TOOLING_TYPE = "tooling";
+
 const projects = [
   {
     name: "Gostore",
@@ -15,6 +19,7 @@ const projects = [
     techStack: ["Go", "Echo Framework", "Hexagonal Architecture"],
     githubUsername: "jibaru",
     githubRepositoryName: "gostore",
+    type: TOOLING_TYPE,
   },
   {
     name: "Gobeats",
@@ -24,6 +29,7 @@ const projects = [
     techStack: ["Go", "Docker", "CLI", "Termui"],
     githubUsername: "jibaru",
     githubRepositoryName: "gobeats",
+    type: TOOLING_TYPE,
   },
   {
     name: "Home Inventory API",
@@ -43,6 +49,7 @@ const projects = [
     ],
     githubUsername: "jibaru",
     githubRepositoryName: "home-inventory-api",
+    type: WEB_TYPE,
   },
   {
     name: "Do",
@@ -60,6 +67,7 @@ const projects = [
     techStack: ["Go", "CLI", "HTTP", "JSON", "Pipeline", "vscode"],
     githubUsername: "jibaru",
     githubRepositoryName: "do",
+    type: TOOLING_TYPE,
   },
   {
     name: "SchemaSpy Docker Setup",
@@ -73,6 +81,7 @@ const projects = [
     techStack: ["Python", "Docker", "Java", "JSON", "XML", "Markdown"],
     githubUsername: "jibaru",
     githubRepositoryName: "schemaspy-docker-setup",
+    type: TOOLING_TYPE,
   },
   {
     name: "Purchase Records API",
@@ -84,6 +93,7 @@ const projects = [
     techStack: ["PHP", "Docker", "MySQL", "DDD", "XML"],
     githubUsername: "jibaru",
     githubRepositoryName: "purchase-records-api",
+    type: WEB_TYPE,
   },
   {
     name: "Peru Pokemon Tournaments Manager",
@@ -98,6 +108,7 @@ const projects = [
     techStack: ["PHP", "Docker", "MySQL", "Pokemon"],
     githubUsername: "Peru-Pokemon-Tournaments",
     githubRepositoryName: "peru-pokemon-tournaments-api",
+    type: TOOLING_TYPE,
   },
   {
     name: "Go Data Structures Library",
@@ -116,6 +127,7 @@ const projects = [
     techStack: ["Go", "Data Structures", "Algorithms"],
     githubUsername: "jibaru",
     githubRepositoryName: "golang-data-structures",
+    type: LIBRARY_TYPE,
   },
   {
     name: "Gofind",
@@ -130,6 +142,7 @@ const projects = [
     techStack: ["Go", "Concurrency", "File Searching", "CLI"],
     githubUsername: "jibaru",
     githubRepositoryName: "gofind",
+    type: TOOLING_TYPE,
   },
   {
     name: "Lite Red-Cetario cooking recipes app",
@@ -148,6 +161,7 @@ const projects = [
     techStack: ["Android", "Kotlin", "MySQL", "PDF", "Paper publication"],
     githubUsername: "jibaru",
     githubRepositoryName: "red-cetario",
+    type: WEB_TYPE,
   },
   {
     name: "OS Processes Planning Explainer",
@@ -166,6 +180,7 @@ const projects = [
     techStack: ["Algorithm", "JS", "OS"],
     githubUsername: "jibaru",
     githubRepositoryName: "process-planning-algorithms",
+    type: WEB_TYPE,
   },
   {
     name: "Network Segmentation Tool",
@@ -183,6 +198,7 @@ const projects = [
     techStack: ["Algorithm", "JS", "Networks", "IPv4"],
     githubUsername: "jibaru",
     githubRepositoryName: "network-segmentation",
+    type: WEB_TYPE,
   },
   {
     name: "Graphical Computer Algorithms",
@@ -196,6 +212,7 @@ const projects = [
     techStack: ["Algorithm", "OpenGL/GLUT", "C++", "Graphics"],
     githubUsername: "jibaru",
     githubRepositoryName: "graphical-computing-algorithms",
+    type: TOOLING_TYPE,
   },
 ];
 
@@ -257,11 +274,28 @@ const createProjectElement = async (project) => {
 };
 
 const loadProjects = async () => {
-  const projectsList = document.getElementById("projects");
+  const webProjects = document.getElementById("web");
+  const libraryProjects = document.getElementById("libraries");
+  const toolingProjects = document.getElementById("tooling");
 
   for (const project of projects) {
+    let selectedList = null;
+    switch (project.type) {
+      case WEB_TYPE:
+        selectedList = webProjects;
+        break;
+      case TOOLING_TYPE:
+        selectedList = toolingProjects;
+        break;
+      case LIBRARY_TYPE:
+        selectedList = libraryProjects;
+        break;
+      default:
+        selectedList = webProjects;
+    }
+
     const projectElement = await createProjectElement(project);
-    projectsList.appendChild(projectElement);
+    selectedList.appendChild(projectElement);
   }
 };
 
