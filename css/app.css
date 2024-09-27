@@ -47,8 +47,25 @@ i {
   font-style: italic;
 }
 
+#logo-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo-container img {
+  border-radius: 10px;
+  border: 2px dotted var(--separator-border-color);
+}
+
 .subtitle-container {
   text-align: center;
+  background-color: rgb(76, 75, 74);
+  padding: 0.1rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  border: 2px dotted var(--separator-border-color);
 }
 
 .projects {
@@ -117,20 +134,30 @@ i {
   font-size: 0.7rem;
 }
 
-footer {
+nav {
   margin: 1rem 0 0.5rem 0;
   color: var(--light-color);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-footer a {
+nav a {
+  padding: 0.2rem 0.5rem;
+  margin: 0.2rem;
   color: var(--light-color) !important;
   text-decoration: none;
+  color: var(--tech-links-text-color);
+  background-color: var(--tech-links-bg-color);
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+  box-shadow: 2px 2px 5px var(--box-shadow-color);
+  border-radius: 10px;
+  border: 2px dotted var(--separator-border-color);
 }
 
-footer a:hover {
+nav a:hover {
   text-decoration: underline;
 }

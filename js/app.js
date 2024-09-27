@@ -108,7 +108,7 @@ const projects = [
     techStack: ["PHP", "Docker", "MySQL", "Pokemon"],
     githubUsername: "Peru-Pokemon-Tournaments",
     githubRepositoryName: "peru-pokemon-tournaments-api",
-    type: TOOLING_TYPE,
+    type: WEB_TYPE,
   },
   {
     name: "Go Data Structures Library",
@@ -226,7 +226,7 @@ const projects = [
     techStack: ["Patterns", "Go", "Examples"],
     githubUsername: "jibaru",
     githubRepositoryName: "patterns-of-enterprise-application-in-go",
-    type: TOOLING_TYPE,
+    type: LIBRARY_TYPE,
   },
 ];
 
