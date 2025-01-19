@@ -228,6 +228,27 @@ const projects = [
     githubRepositoryName: "patterns-of-enterprise-application-in-go",
     type: LIBRARY_TYPE,
   },
+  {
+    name: "GoMiniwin",
+    summary:
+      "Mini-set of GUI functions for Windows & Linux to start creating videogames",
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/Jibaru/gominiwin",
+      },
+    ],
+    techStack: [
+      "Go",
+      "Win32 API",
+      "X11 Linux API",
+      "Concurrency",
+      "Videogames",
+    ],
+    githubUsername: "jibaru",
+    githubRepositoryName: "gominiwin",
+    type: LIBRARY_TYPE,
+  },
 ];
 
 const fetchGithubInformation = async (githubUsername, repositoryName) => {
