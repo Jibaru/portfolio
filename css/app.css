@@ -188,10 +188,6 @@ nav .selected {
   color: var(--tech-text-color);
 }
 
-.w-50 {
-  max-width: 50%;
-}
-
 .info-container > h2 {
   text-align: center;
   color: var(--light-color);
@@ -203,6 +199,13 @@ nav .selected {
 .info-container .card {
   max-width: 50%;
   margin: 1rem auto;
+}
+
+@media (max-width: 768px) {
+  .info-container .card {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .tech-list {
