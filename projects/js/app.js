@@ -252,11 +252,6 @@ const projects = [
 ];
 
 const fetchGithubInformation = async (githubUsername, repositoryName) => {
-  return {
-    stars: 5,
-    forks: 6,
-  };
-
   const resp = await fetch(
     GITHUB_INFORMATION_URL.replace("{repository}", repositoryName).replace(
       "{username}",
