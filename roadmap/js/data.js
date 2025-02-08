@@ -5,9 +5,10 @@ const CACHE_DURATION = 10 * 60 * 1000;
  * Get roadmap records
  *
  * @returns {Promise<Array<{
- *   group: string,
- *   technology: string,
+ *   topic: string,
+ *   type: string,
  *   resourceName: string,
+ *   authors: string,
  *   resourceURL: string,
  *   startedAt: string,
  *   finishedAt: string,
@@ -37,9 +38,10 @@ export const getRecords = async () => {
  * Query the Google Sheet roadmap records
  *
  * @returns {Promise<Array<{
- *   group: string,
- *   technology: string,
+ *   topic: string,
+ *   type: string,
  *   resourceName: string,
+ *   authors: string,
  *   resourceURL: string,
  *   startedAt: string,
  *   finishedAt: string,
@@ -65,11 +67,20 @@ export const fetchRecords = async () => {
     return parseTableToJSON(tbody)
       .filter((row) => row.resource_name && row.resource_url)
       .map((row) => {
+        let resourceURL = row.resource_url ?? null;
+        if (resourceURL !== null) {
+          resourceURL = resourceURL.replace(
+            "https://www.google.com/url?q=",
+            ""
+          );
+        }
+
         return {
-          group: row.group ?? null,
-          technology: row.technology ?? null,
+          topic: row.topic ?? null,
+          type: row.type ?? null,
           resourceName: row.resource_name ?? null,
-          resourceURL: row.resource_url ?? null,
+          authors: row.authors ?? null,
+          resourceURL: resourceURL,
           startedAt: row.from_utc_5 ?? null,
           finishedAt: row.to_utc_5 ?? null,
           status: row.status ?? null,
@@ -84,9 +95,10 @@ export const fetchRecords = async () => {
 /**
  * @param {HTMLTableSectionElement} tbody
  * @returns {Array<{
- *   group: string,
- *   technology: string,
+ *   topic: string,
+ *   type: string,
  *   resource_name: string,
+ *   authors: string,
  *   resource_url: string,
  *   from_utc_5: string,
  *   to_utc_5: string,

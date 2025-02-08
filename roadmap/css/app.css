@@ -311,3 +311,8 @@ td {
 .td-resource-url a:hover {
   text-decoration: underline;
 }
+
+#loader {
+  text-align: center;
+  color: var(--light-color);
+}
