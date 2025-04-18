@@ -7,6 +7,26 @@ const TOOLING_TYPE = "tooling";
 
 const projects = [
   {
+    name: "Monitoring",
+    summary:
+      "Monitor, analyze, and manage logs from all your applications in one place. Get logs insights and never miss critical issues.",
+    links: [{ name: "Website", url: "https://try-monitoring.vercel.app" }],
+    techStack: [
+      "Go",
+      "Vercel",
+      "React",
+      "Shadcn",
+      "Tailwind",
+      "MongoDB",
+      "API REST",
+      "OAuth2",
+      "JWT",
+    ],
+    githubUsername: "jibaru",
+    githubRepositoryName: "monitoring-landing",
+    type: WEB_TYPE,
+  },
+  {
     name: "Gostore",
     summary: "A simplistic and minimalist file storage similar to AWS S3",
     links: [
