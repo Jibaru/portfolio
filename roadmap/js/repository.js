@@ -1,11 +1,10 @@
+import { Reader } from "./gsheet.js";
+
 /** @type {string} */
 const CACHE_KEY = "ROADMAP_RECORDS";
 
 /** @type {number} */
 const CACHE_DURATION = 10 * 60 * 1000;
-
-/** @type {string} */
-const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/1866xFA77c1ymrhO4aQrKHuWYX_G4pxdb-GodViIkMsQ/pubhtml?gid=0&single=true";
 
 /**
  * @typedef {Object} RawRecord
@@ -59,81 +58,47 @@ class RoadmapRepository {
   }
 
   /**
-   * @param {HTMLTableSectionElement} tbody
-   * @returns {RawRecord[]}
-   */
-  parseTableToJSON(tbody) {
-    const rows = tbody.querySelectorAll("tr");
-    if (rows.length < 2) return [];
-
-    const headers = [...rows[0].querySelectorAll("td")].map((td) =>
-      td.textContent.trim()
-    );
-
-    const data = [...rows].slice(2).map((row) => {
-      const cells = row.querySelectorAll("td");
-      /** @type {any} */
-      let obj = {};
-
-      headers.forEach((header, index) => {
-        let cell = cells[index];
-        if (!cell) return;
-
-        let link = cell.querySelector("a");
-        obj[header] = link ? link.href : cell.textContent.trim();
-      });
-
-      return obj;
-    });
-
-    return data;
-  }
-
-  /**
-   * @param {RawRecord} row
-   * @returns {RoadmapRecord}
-   */
-  transformRecord(row) {
-    let resourceURL = row.resource_url ?? null;
-    if (resourceURL !== null) {
-      resourceURL = resourceURL.replace(
-        "https://www.google.com/url?q=",
-        ""
-      );
-    }
-
-    return {
-      topic: row.topic ?? null,
-      type: row.type ?? null,
-      resourceName: row.resource_name ?? null,
-      authors: row.authors ?? null,
-      resourceURL: resourceURL,
-      startedAt: row.from_utc_5 ?? null,
-      finishedAt: row.to_utc_5 ?? null,
-      status: row.status ?? null,
-    };
-  }
-
-  /**
    * @returns {Promise<RoadmapRecord[]>}
    */
   async fetchRecords() {
     try {
-      const response = await fetch(GOOGLE_SHEET_URL);
-      const text = await response.text();
+      const reader = new Reader({ id: "1866xFA77c1ymrhO4aQrKHuWYX_G4pxdb-GodViIkMsQ" });
+      const table = await reader.sheet("0");
 
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(text, "text/html");
-
-      const tbody = doc.querySelector("tbody");
-      if (!tbody) {
-        return [];
-      }
-
-      const rawRecords = this.parseTableToJSON(tbody);
-      return rawRecords
-        .filter((row) => row.resource_name && row.resource_url)
-        .map(row => this.transformRecord(row));
+      /**
+       * @typedef {Object} Resource
+       * @property {string} authors - Author(s) of the resource.
+       * @property {string} from_utc-5 - Start date/time in UTC-5 timezone.
+       * @property {string} resource_name - Name/title of the resource.
+       * @property {string} resource_url - URL to the resource.
+       * @property {string} status - Current status (e.g., "✅").
+       * @property {string} to_utc-5 - End date/time in UTC-5 timezone.
+       * @property {string} topic - Topic or subject area.
+       * @property {string} type - Type of resource (e.g., "book").
+       */
+      /** @type {Resource[]} */
+      const records = table.records;
+      
+      return records.map((row) => {
+        let resourceURL = row.resource_url ?? null;
+        if (resourceURL !== null) {
+          resourceURL = resourceURL.replace(
+            "https://www.google.com/url?q=",
+            ""
+          );
+        }
+      
+        return {
+          topic: row.topic ?? null,
+          type: row.type ?? null,
+          resourceName: row.resource_name ?? null,
+          authors: row.authors ?? null,
+          resourceURL: resourceURL,
+          startedAt: row["from_utc-5"] ?? null,
+          finishedAt: row["to_utc-5"] ?? null,
+          status: row.status ?? null,
+        };
+      }).filter((row) => row.resourceName && row.resourceURL);
     } catch (error) {
       console.error("Error fetching records from Google Sheets:", error);
       return [];
