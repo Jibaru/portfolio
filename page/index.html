@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ignacio Rueda — CV</title>
+  <style>
+    :root{
+      --accent: #0b3d91;
+      --muted: #444;
+      --serif: "Georgia", "Times New Roman", Times, serif;
+      --sans: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body{
+      margin:0;
+      padding:0;
+      background:#f6f6f6;
+      font-family:var(--serif);
+      color:#111;
+    }
+
+    .page{
+      width:210mm;        /* A4 width */
+      min-height:297mm;   /* A4 height */
+      margin:20px auto;
+      padding:25mm 20mm 25mm 20mm;
+      background:white;
+      box-shadow:0 0 8px rgba(0,0,0,0.15);
+      box-sizing:border-box;
+      overflow:hidden;
+      page-break-after:always;
+    }
+
+    header{
+      margin-bottom:20px;
+    }
+
+    .name{
+      font-size:26px;
+      margin:0;
+    }
+
+    .meta{
+      font-size:13px;
+      color:var(--muted);
+      margin:0;
+      font-family:var(--sans);
+    }
+
+    .tagline{
+      font-style:italic;
+      font-size:14px;
+      margin-top:6px;
+    }
+
+    h2{
+      font-family:var(--sans);
+      color:var(--accent);
+      font-size:15px;
+      margin:18px 0 8px 0;
+      font-weight:700;
+    }
+
+    h3{
+      margin:0;
+      font-size:14px;
+      font-weight:600;
+      font-family:var(--sans);
+    }
+
+    .dates{
+      float:right;
+      font-size:12px;
+      color:var(--muted);
+      font-family:var(--sans);
+    }
+
+    ul{margin:6px 0 10px 20px;padding:0}
+    li{margin:4px 0;font-size:14px;line-height:1.4}
+
+    .role-meta{font-size:12px;color:var(--muted);margin-top:3px}
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:8px;
+    }
+    .chip{
+      background:#f0f4ff;
+      color:var(--accent);
+      padding:4px 7px;
+      font-size:12px;
+      border-radius:12px;
+      font-family:var(--sans);
+      text-decoration:none;
+    }
+
+    a.chip:hover{
+      background:#e0e8ff;
+    }
+
+    footer{
+      border-top:1px solid #ddd;
+      margin-top:16px;
+      padding-top:10px;
+      font-size:12px;
+      font-family:var(--sans);
+      color:var(--muted);
+    }
+
+    /* Force page breaks for print */
+    @media print {
+      body{background:white}
+      .page{margin:0; box-shadow:none; page-break-after:always;}
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="page" id="cv">
+    <header>
+      <h1 class="name">Ignacio Rueda</h1>
+      <p class="meta">Lima, Peru · 5 years of experience · Interested in Backend roles</p>
+      <p class="tagline"><b>Backend Senior Software Engineer</b> with a strong focus on scalability, performance, and clean architecture. While my specialization is in Golang and cloud-based solutions, I bring a comprehensive understanding of the entire product ecosystem, including web, mobile, and IoT. This unique, end-to-end perspective allows me to effectively diagnose complex issues and architect complete solutions that go beyond the traditional backend scope.</p>
+      <div class="skills" style="margin-top: 10px;">
+        <a href="https://jibaru.github.io/portfolio" target="_blank" class="chip">Portfolio ↗</a>
+        <a href="https://github.com/Jibaru" target="_blank" class="chip">Github ↗</a>
+        <a href="https://www.linkedin.com/in/ignacior97/" target="_blank" class="chip">LinkedIn ↗</a>
+        <a href="https://stackoverflow.com/users/14657675/ignacior" target="_blank" class="chip">StackOverflow ↗</a>
+        <a href="https://www.youtube.com/@pull-request" target="_blank" class="chip">YouTube ↗</a>
+        <a href="https://www.codechef.com/users/jibaru97" target="_blank" class="chip">CodeChef ↗</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Work Experience</h2>
+
+      <article>
+        <h3>Backend AI Developer — Crafter Station <span class="dates">Feb 2025 – Present</span></h3>
+        <p class="role-meta">AI & backend development, prototypes, tooling and integrations</p>
+        <ul>
+          <li>Participated in <strong>global hackathons</strong> in 2025, delivering prototypes and demos in record time.</li>
+          <li>Built <strong>Githunter</strong>, an AI-powered GitHub talent-search tool.</li>
+          <li>Won the <strong>Gemini CLI Desktop UI Challenge</strong> from <a href="https://letsacc.com">letsacc.com</a>, a tool for using Gemini CLI in a UI environment made with <strong>Go and React</strong>.</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Disney Parks Golang Software Engineer — Globant <span class="dates">Mar 2024 – Present</span></h3>
+        <p class="role-meta">Real-time pipelines, AWS serverless, Go microservices</p>
+        <ul> <li>🏆 2nd Place at Peru's <strong>Globant AI-Challenge.</strong></li>
+        <li>Implemented <strong>real-time data pipelines</strong> using MongoDB Aggregations, AWS Kinesis, SQS, Lambda & Fargate.</li>
+        <li>Architected 10+ Go AWS Lambdas following <strong>hexagonal architecture and DDD.</strong></li>
+        <li>Optimized a <strong>high-volume data processing stream</strong> by redesigning the architecture with AWS Kinesis and Lambda, successfully <strong>eliminating latency issues, timeouts, and critical database deadlocks</strong>.</li>
+        <li>Reduced wait-time summarization from <strong>15s to 2–3s in a single sprint</strong>.</li>
+        <li>Contributed to the <strong>architectural design</strong> and development of a new alerting system based on dynamic conditions.</li>
+        <li>Led Code Champions: <strong>authored best practices and mentored</strong> engineers.</li> </ul>
+      </article>
+    </section>
+    
+    <section>
+      <article>
+        <h3>Backend Software Developer — ID Business Intelligence <span class="dates">Mar 2022 – Mar 2024</span></h3>
+        <p class="role-meta">Go, REST APIs, PHP, Monolith service</p>
+        <ul>
+          <li><strong>Optimized REST APIs</strong> with MySQL indexing, reducing latency incidents.</li>
+          <li><strong>Migrated legacy</strong> POS from PHP 7.4/Laravel 5.8 to PHP 8.1/Laravel 8.</li>
+          <li>Maintained IoT printing platform in <strong>Go/gRPC</strong> supporting 100+ devices.</li>
+          <li>Mitigated issues in a legacy billing environment by creating new features through the use of <strong>design patterns and refactoring.</strong></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>IEEEXtreme Student Ambassador — IEEE <span class="dates">Apr 2023 – Oct 2023</span></h3>
+        <ul>
+          <li><strong>Organized campaigns</strong> promoting the 24-hour coding competition.</li>
+          <li>Produced <strong>YouTube content</strong> and coordinated <strong>workshops</strong>.</li>
+        </ul>
+      </article>
+<br/>
+    <br/>
+    <br/><br/>
+    <br/>
+    <br/>
+      <article>
+        <h3>Software Developer — Overskull <span class="dates">Mar 2019 – Mar 2020</span></h3>
+        <ul>
+          <li>Built Vue.js + Laravel dashboards and Flutter apps; migrated a Web App to Flutter, <strong>boosting performance.</strong></li>
+          <li>Developed <strong>REST API services</strong> with MVC and service-layer patterns.</li>
+        </ul>
+      </article>
+    </section>
+    
+    
+    
+    <section>
+      <h2>Education</h2>
+      <article>
+        <h3>Systems Engineer — Universidad Nacional Tecnológica de Lima Sur <span class="dates">Jan 2023</span></h3>
+        <ul>
+          <li>Top decile of cohort; conference presentation on cross-platform apps.</li>
+          <li>Participated in Devsu Code Jam, Google Hash Code, UniExtreme.</li>
+          <li>Built a PIC-based air-compressor control system during the pandemic.</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>B2 English — Instituto Cultural Peruano Norteamericano <span class="dates">Jan 2025</span></h3>
+        <p class="role-meta">Completed Advanced Program of English; TOEFL-certified B2 level.</p>
+      </article>
+    </section>
+    
+    <section>
+      <h2>Languages</h2>
+      <div class="skills">
+        <div class="chip">Spanish (native)</div>
+        <div class="chip">English (B2)</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="chip">Go (advanced)</div>
+        <div class="chip">MongoDB (advanced)</div>
+        <div class="chip">MySQL (advanced)</div>
+        <div class="chip">JavaScript (advanced)</div>
+        <div class="chip">Git (advanced)</div>
+        <div class="chip">PostgreSQL (intermediate)</div>
+        <div class="chip">AWS (intermediate)</div>
+        <div class="chip">Docker (intermediate)</div>
+        <div class="chip">Bash/Shell (intermediate)</div>
+        <div class="chip">React (intermediate)</div>
+        <div class="chip">AWS (intermediate)</div>
+      </div>
+    </section>
+  </div>
+  </div>
+
+</body>
+</html>
